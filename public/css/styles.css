@@ -4,3 +4,259 @@
 *:after {
   box-sizing: border-box;
 }
+
+:root{
+  --size: 40px;
+  --c1: black;
+  --c2: white;
+}
+
+body {
+    background-image: url("/images/site/checkerboard.jpg");
+    background-size: 350px 350px;
+    background-repeat: repeat;
+    background-position: top left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*  ------ Making so everything is in a white box --------- */
+#wrapper {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 900px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 15px;
+  border: 8px solid blueviolet
+}
+
+header, nav,main, footer {
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.siteName {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: left;  
+  text-decoration: none;
+}
+
+.siteName a, #tools a {
+  text-decoration: none;
+  color: black;
+}
+
+.siteName a:hover {
+  text-decoration: underline; 
+}
+
+
+
+#tools {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+/* -- navigation --- */
+nav {
+  background-color: black;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+nav li:hover {
+  color: lightblue;
+}
+
+/* -- Hero Section -- */
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* --- Overlay box --- */
+.hero-box {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width:  300px;
+    text-align: center;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+}
+.hero-box h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: blueviolet
+}
+.hero-box p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.hero-box .button {
+  display: inline-block;
+  background-color: blueviolet;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-box .button:hover {
+  background-color: indigo;
+  transform: scale(1.05);
+}
+
+/* --section upgrades and reviews -- */
+.features {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+
+
+.upgrades ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.upgrades li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.image-box {
+    background-color: blueviolet;
+    padding: 0.5rem 1.75rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.upgrade-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.upgrades, .reviews {
+  flex: 1 1 45%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding:1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.upgrades h2, .reviews h2 {
+  color: blueviolet;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+
+.reviews ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.reviews li {
+    padding: 0.25rem 0;
+    border-bottom: none;
+}
+
+@media (max-width: 1024px) {
+    .hero-box {
+        max-width: 250px;
+        top: 15%;
+        left: 5%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+     .hero-box h2 {
+      font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-box {
+        max-width: 200px;
+        top: 10%;
+        left: 5%;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    .hero-box h2 {
+      font-size: 1.2rem;
+    }
+    .features {
+      flex-direction: column;
+    }
+
+    .reviews {
+        order: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .upgrades {
+        order: 1;
+    }
+}
