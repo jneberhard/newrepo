@@ -33,4 +33,3 @@ inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
 
 
 
-SELECT * FROM inventory
