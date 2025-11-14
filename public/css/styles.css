@@ -9,6 +9,8 @@
   --size: 40px;
   --c1: black;
   --c2: white;
+  --primary-color: blueviolet;
+
 }
 
 body {
@@ -82,17 +84,26 @@ nav ul {
   justify-content: space-around;
   align-items: center;
   margin: 0;
-  padding: 0;
+  flex-wrap: wrap;
+
 }
 
-nav li {
-  color: white;
+nav ul li a {
+  color: lightblue;
   font-weight: bold;
   cursor: pointer;
   transition: color 0.3s ease;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  display: inline-block;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
 }
 nav li:hover {
-  color: lightblue;
+  background-color: white;
+  color: var(--primary-color);
+  
 }
 
 /* -- Hero Section -- */
@@ -128,7 +139,7 @@ nav li:hover {
 .hero-box h2 {
   margin: 0;
   font-size: 1.8rem;
-  color: blueviolet
+  color: var(--primary-color)
 }
 .hero-box p {
   margin-top: 0.5rem;
@@ -138,7 +149,7 @@ nav li:hover {
 
 .hero-box .button {
   display: inline-block;
-  background-color: blueviolet;
+  background-color: var(--primary-color);
   color: white;
   padding: 0.75rem 1.25rem;
   text-decoration: none;
@@ -182,7 +193,7 @@ nav li:hover {
 }
 
 .image-box {
-    background-color: blueviolet;
+    background-color: var(--primary-color);
     padding: 0.5rem 1.75rem;
     border-radius: 10px;
     display: flex;
@@ -205,7 +216,7 @@ nav li:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .upgrades h2, .reviews h2 {
-  color: blueviolet;
+  color: var(--primary-color);
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -273,10 +284,67 @@ nav li:hover {
     display: block;
     margin-top: 0.5rem;
     font-size: 1.1rem;
-    color: blueviolet;
+    color: var(--primary-color);
     font-weight: bold;
 }
 
+
+/* ************* Single item inventory page ****************** */
+.details1 {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.inventory-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+
+/* Left column*/
+.inventory-detail {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.inventory-detail img {
+  height: auto;
+  width: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.inventory-detail h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: var(--primary-color);
+}
+
+/* Right column */
+.inventory-description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.inventory-description p {
+  margin: 0.25rem;
+}
+
+/* Full description below */
+.inventory-full-description {
+  flex-basis: 100%;
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
 
 /*  media options for responsiveness  */
 @media (max-width: 1024px) {
@@ -314,5 +382,16 @@ nav li:hover {
 
     .upgrades {
         order: 1;
+    }
+
+    .details1 {
+      flex-direction: column;
+    }
+    .inventory-columns {
+      flex-direction: column;
+    }
+
+    .inventory-detail, .inventory-description {
+      width: 100%;
     }
 }

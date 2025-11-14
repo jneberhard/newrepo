@@ -28,7 +28,7 @@ Util.getNav = async function () {
 * Build the classification view HTML
 * ************************************ */
 Util.buildClassificationGrid = async function(data){
-    let grid
+    let grid = ""
     if(data.length > 0){
         grid = '<ul id="inv-display">'  // id = inv-display
         data.forEach(vehicle => { 
@@ -57,6 +57,37 @@ Util.buildClassificationGrid = async function(data){
     return grid
 }
 
+/* **************************************
+* Build the inventory view HTML
+* ************************************ */
+Util.buildInventoryView = async function (vehicleData) {
+    if (!vehicleData) {
+        return '<p class="notice">Sorry, no matching vehicle could be found.</p>';
+    }
+
+    const item = ` <section class="details1">
+        <div class="inventory-columns">
+            <div class="inventory-detail">
+                <h1>${vehicleData.inv_year} ${vehicleData.inv_make} ${vehicleData.inv_model}</h1>
+                <img src="${vehicleData.inv_image}" alt="Image of ${vehicleData.inv_make} ${vehicleData.inv_model} on JNE Motors">
+            </div>
+            <div class="inventory-description">
+                <h2>Price: $${new Intl.NumberFormat('en-US').format(vehicleData.inv_price)}</h2>
+                <p>Year: ${vehicleData.inv_year}</p>
+                <p>Make: ${vehicleData.inv_make}</p>
+                <p>Model: ${vehicleData.inv_model}</p>
+                <p>Mileage: ${new Intl.NumberFormat('en-US').format(vehicleData.inv_miles)}</p>
+                <p>Color: ${vehicleData.inv_color}</p>
+            </div>
+        </div>
+        </section>
+        <div class="inventory-full-description">
+            <p>${vehicleData.inv_description}</p>
+        </div>
+`;
+    return item;
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
@@ -64,4 +95,4 @@ Util.buildClassificationGrid = async function(data){
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
-module.exports = Util
+module.exports = Util;
