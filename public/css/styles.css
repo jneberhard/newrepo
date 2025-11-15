@@ -45,6 +45,22 @@ header, nav,main, footer {
   border-radius: 8px;
 }
 
+footer {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+footer a {
+  color: lightblue
+}
+
+footer a:hover {
+  background-color: white;
+  color: var(--primary-color);
+  padding: .25rem;
+
+}
+
 .siteName {
   font-size: 2.5rem;
   font-weight: bold;
