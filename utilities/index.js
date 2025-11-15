@@ -64,7 +64,7 @@ Util.buildInventoryView = async function (vehicleData) {
     if (!vehicleData) {
         return '<p class="notice">Sorry, no matching vehicle could be found.</p>';
     }
-
+//putting the full description at the bottom instead of with column 2
     const item = ` <section class="details1">
         <div class="inventory-columns">
             <div class="inventory-detail">
@@ -81,7 +81,7 @@ Util.buildInventoryView = async function (vehicleData) {
             </div>
         </div>
         </section>
-        <div class="inventory-full-description">
+        <div class="inventory-full-description">  
             <p>${vehicleData.inv_description}</p>
         </div>
 `;

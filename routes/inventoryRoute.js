@@ -1,7 +1,7 @@
 // Needed Resources 
 const express = require("express")
 const router = new express.Router() 
-const invController = require("../controllers/invController")
+const invController = require("../controllers/invController")  //importing invCcontroller.js
 const utilities = require("../utilities")
 
 // Route to build inventory by classification view
@@ -10,7 +10,7 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to build inventory  view
 router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInventoryId));
 
-//Route to cause error
+//Route to cause error --add router 
 router.get("/500-error", invController.causeError)
 
 module.exports = router;

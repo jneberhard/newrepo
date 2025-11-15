@@ -1,7 +1,7 @@
-const invModel = require("../models/inventory-model")
+const invModel = require("../models/inventory-model")  //imports the models
 const utilities = require("../utilities/")
 
-const invCont = {}
+const invCont = {}    //intCont = short for inventoryController
 
 /* ***************************
  *  Build inventory by classification view
@@ -51,7 +51,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
 }
 
 /* ***************************
- *  Purposely cause error
+ *  Purposely cause error --
  * ************************** */
 invCont.causeError = (req, res, next) => {
   try {
@@ -61,4 +61,4 @@ invCont.causeError = (req, res, next) => {
   }
 }
 
-module.exports = invCont
+module.exports = invCont  
