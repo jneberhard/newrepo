@@ -15,15 +15,15 @@
             <p>All fields are required.</p>
             <div>
                 <label for="first_name">First name</label>
-                <input type="text" id="first_name" name="account_firstname" required />
+                <input type="text" name="account_firstname" id="first_name" required value="<%= locals.account_firstname %>">
             </div>
             <div>
                 <label for="last_name">Last Name</label>
-                <input type="text" id="last_name" name="account_lastname" required/>
+                <input type="text" id="last_name" name="account_lastname" required value="<%= locals.account_lastname %>"/>
             </div>
             <div>
                 <label for="email">Email address</label>
-                <input type="email" id="email" name="account_email" required/>
+                <input type="email" id="email" name="account_email" required value="<%= locals.account_email %>"/>
             </div>
             <div>
                 <label for="password">Password</label>
