@@ -363,6 +363,84 @@ nav  ul li:hover a {
   line-height: 1.6;
 }
 
+/* Login page */
+
+.login-page, .signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.account-login, .account-signup {
+  border: 3px solid var(--primary-color);
+  border-radius: 12px;
+  text-align: center;
+  max-width: 350px;
+  background-color: lightblue;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page h1 {
+  color: var(--primary-color)
+}
+
+.login, .signup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 10px;
+}
+
+.signup {
+  text-align: left;
+}
+
+.login label, .signup label {
+  font-weight: bold;
+  text-align: left;
+}
+
+.login input, .signup input {
+  border: 2px solid black;
+  width: 100%;
+  height: 30px;
+}
+
+.login button, .signup button {
+  background-color: var(--primary-color);
+  border-radius: 7px;
+  font-weight: bold;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+  width: 100px;
+  padding: 12px 25px;
+  align-self: center;
+}
+
+.login button:hover, .signup button:hover {
+  background-color: aqua;
+  transform: scale(1.1);
+  color: black;
+}
+
+.account-login a {
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+}
+
+.account-login a:hover {
+  transform: scale(1.1);
+  color: black;
+
+}
+
+
+
 /*  media options for responsiveness  */
 @media (max-width: 1024px) {
     .hero-box {

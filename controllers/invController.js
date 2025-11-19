@@ -9,7 +9,7 @@ const invCont = {}    //intCont = short for inventoryController
 invCont.buildByClassificationId = async function (req, res, next) {
   const classification_id = req.params.classificationId
   const data = await invModel.getInventoryByClassificationId(classification_id) 
-  if (!data || data.length === 0) {   //checking to make sure the classifaction ID (data) is valid, if not, throw 404 error.
+  if (!data || data.length === 0) {   //checking to make sure the classification ID (data) is valid, if not, throw 404 error.
     return next({
       status: 404,
       message: "Nothing found for this classification"
