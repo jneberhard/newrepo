@@ -9,10 +9,9 @@
  </ul>
 <% } %>
 <p>All fields are required.</p>
-<div class ="signup-page">
-    <div class="account-signup">  
+<div class ="form-container">
+    <div class="form-input">  
         <form class="signup" action="/account/register" method="post">
-            <p>All fields are required.</p>
             <div>
                 <label for="first_name">First name</label>
                 <input type="text" name="account_firstname" id="first_name" required value="<%= locals.account_firstname %>">

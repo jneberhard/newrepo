@@ -18,12 +18,21 @@ router.post("/register",
     regValidate.checkRegData,
     utilities.handleErrors(acctController.registerAccount))
 
-// Process the login attempt
-router.post(
-    "/login",
+//Process the login attempt
+router.post("/login",
     regValidate.loginRules(),
     regValidate.checkLoginData,
     utilities.handleErrors(acctController.loginAccount)
     );
 
+
+
+ /*   router.post(
+  "/login",
+  regValidate.loginRules(),      // this one IS called (returns an array)
+  regValidate.checkLoginData,    // this one is NOT called
+  (req, res) => {
+    res.status(200).send("login process")
+  }
+)*/
 module.exports = router;  
