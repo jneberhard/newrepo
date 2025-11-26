@@ -13,7 +13,11 @@
 
 <div class ="form-container">
     <div class="form-input">  
-        <form class="modify-inventory" action="/inv/update" method="post">
+        <form class="modify-inventory" action="/inv/update" method="post" id="updateForm">
+            <div>
+                <label for="classification_id">Classification</label>
+                <%- classificationList %>
+            </div>
             <div>
                 <label for="inv_make">Make</label>
                 <input type="text" name="inv_make" id="inv_make" required value="<%= inv_make %>">
@@ -50,11 +54,13 @@
                 <label for="inv_color">Color</label>
                 <input type="text" id="inv_color" name="inv_color" required value="<%= inv_color %>"/>
             </div>
-            <div>
-                <label for="classification_id">Classification</label>
-                <%- classificationList %>
-            </div>
-            <button type="submit">Update Vehicle</button>
+            
+            <button type="submit"disabled>Update Vehicle</button>
+            <input type="hidden" name="inv_id"
+            <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+            <% } %>>
         </form>       
     </div>
 </div>
+
+<script src="/js/inv-update.js"></script>
