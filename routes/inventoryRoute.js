@@ -33,4 +33,10 @@ router.post("/add-inventory", invValidate.newInventoryRules(),
     invValidate.checkInvData, utilities.handleErrors(invController.addInventory)
 )
 
+//route to help choose classification for editing a vehicle
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+//router for inventory management
+//router.get("/inventory/edit/:inv_id", utilities.handleErrors(invController.buildEditInventory));
+
 module.exports = router;

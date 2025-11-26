@@ -474,6 +474,12 @@ nav  ul li:hover a {
   color: red;
 }
 
+#inventoryDisplay {
+  margin-top: 1.5rem;
+  color: -var(--primary-color);
+  font-weight: bold;
+}
+
 /*  media options for responsiveness  */
 @media (max-width: 1024px) {
     .hero-box {
