@@ -37,6 +37,6 @@ router.post("/add-inventory", invValidate.newInventoryRules(),
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 //router for inventory management
-//router.get("/inventory/edit/:inv_id", utilities.handleErrors(invController.buildEditInventory));
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInventory));
 
 module.exports = router;
