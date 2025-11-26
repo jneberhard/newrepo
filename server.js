@@ -17,7 +17,7 @@ const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/");
 const accountRoute = require("./routes/accountRoute")
-
+const cookieParser = require("cookie-parser")
 
 
 /* ***********************
@@ -46,6 +46,11 @@ app.use(function(req, res, next){
   next()
 })
 
+// Cookie parser middleware
+app.use(cookieParser())
+
+// check JWT token middleware
+app.use(utilities.checkJWTToken)
 
 
 /* ***********************

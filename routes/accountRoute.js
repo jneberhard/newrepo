@@ -6,6 +6,8 @@ const regValidate = require('../utilities/account-validation')
 
 const utilities = require("../utilities")
 
+console.log("acctController keys:", Object.keys(acctController));
+
 //route for login view
 router.get("/login", utilities.handleErrors(acctController.buildLogin));
 
@@ -22,8 +24,12 @@ router.post("/register",
 router.post("/login",
     regValidate.loginRules(),
     regValidate.checkLoginData,
-    utilities.handleErrors(acctController.loginAccount)
+    utilities.handleErrors(acctController.accountLogin)
     );
+
+//route for account view
+router.get("/", utilities.checkLogin, utilities.handleErrors(acctController.buildAccount));
+
 
 
 
