@@ -51,7 +51,26 @@ app.use(cookieParser())
 
 // check JWT token middleware
 app.use(utilities.checkJWTToken)
+app.use(utilities.checkLogin)
 
+//middleware for logged in for all views
+const jwt = require("jsonwebtoken")
+app.use((req, res, next) => {
+  if (req.cookies && req.cookies.jwt) {
+    try {
+      const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
+      res.locals.loggedin = true
+      res.locals.accountData = decoded
+    } catch (error) {
+      res.locals.loggedin = false
+      res.locals.accountData = null
+    }
+  } else {
+    res.locals.loggedin = false
+    res.locals.accountData = null
+  }
+  next()
+})
 
 /* ***********************
  * View Engine and Templates

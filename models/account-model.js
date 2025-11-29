@@ -1,6 +1,4 @@
 const pool = require("../database");
-const { get } = require("../routes/static");
-
 
 /* *****************************
 *   Register new account
@@ -43,4 +41,52 @@ async function getAccountByEmail (account_email) {
   }
 }
 
-module.exports = { registerAccount, checkExistingEmail, getAccountByEmail };
+/* *****************************
+* Get account by ID
+* ***************************** */
+async function getAccountById(account_id) {
+  try {
+    const result = await pool.query(
+      'SELECT account_id, account_firstname, account_lastname, account_email, account_type FROM account WHERE account_id = $1',
+      [account_id])
+    return result.rows[0]
+  } catch (error) {
+    console.error("Error getting account by ID:", error)
+    throw error
+  }
+}
+
+/* *****************************
+* Update account information
+* ***************************** */
+async function updateAccount(account_id, account_firstname, account_lastname, account_email) {
+  try {
+    const result = await pool.query(
+      `UPDATE account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4
+       RETURNING account_id, account_firstname, account_lastname, account_email, account_type`,
+      [account_firstname, account_lastname, account_email, account_id]
+    )
+    return result.rows[0]
+  } catch (error) {
+    console.error("Error in updateAccount:", error)
+    throw error
+  }
+}
+
+/* *****************************
+* Update account password
+* ***************************** */
+async function updatePassword(account_id, hashedPassword) {
+  try {
+    const sql = 'UPDATE account SET account_password = $1 WHERE account_id = $2'
+    const result = await pool.query(sql, [hashedPassword, account_id])
+    return result.rowCount > 0
+  } catch (error) {
+    console.error("Error updating password:", error)
+    throw error
+  }
+}
+
+
+
+module.exports = { registerAccount, getAccountById, checkExistingEmail, getAccountByEmail, updatePassword, updateAccount };

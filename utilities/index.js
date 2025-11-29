@@ -117,12 +117,21 @@ Util.buildClassificationList = async function (classification_id = null) {
  *  Check Login
  * ************************************ */
  Util.checkLogin = (req, res, next) => {
-  if (res.locals.loggedin) {
-    next()
+   if (req.cookies.jwt) {
+     try {
+       const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
+       res.locals.loggedin = true
+       res.locals.accountData = decoded
+
+     } catch(error) {
+       res.locals.loggedin = false
+      res.locals.accountData = null
+    }
   } else {
-    req.flash("notice", "Please log in.")
-    return res.redirect("/account/login")
+    res.locals.loggedin = false
+    res.locals.accountData = null
   }
+  next()
  }
 /* ****************************************
  * Middleware For Handling Errors
@@ -153,7 +162,5 @@ Util.checkJWTToken = (req, res, next) => {
   next()
  }
 }
-
-
 
 module.exports = Util;

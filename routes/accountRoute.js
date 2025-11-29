@@ -3,7 +3,6 @@ const express = require("express")
 const router = express.Router()
 const acctController = require("../controllers/acctController") 
 const regValidate = require('../utilities/account-validation')
-
 const utilities = require("../utilities")
 
 console.log("acctController keys:", Object.keys(acctController));
@@ -30,15 +29,14 @@ router.post("/login",
 //route for account view
 router.get("/", utilities.checkLogin, utilities.handleErrors(acctController.buildAccount));
 
+//route for update account and update password view
+router.get("/update/:account_id",  utilities.checkLogin, utilities.handleErrors(acctController.buildUpdateAccount));
+router.post("/update/:account_id", utilities.checkLogin, regValidate.updateRules(), regValidate.checkUpdateData, utilities.handleErrors(acctController.updateAccount));
+router.post("/update-password/:account_id", utilities.checkLogin, regValidate.passwordRules(), regValidate.checkPasswordData, utilities.handleErrors(acctController.updatePassword))
+  
+//route for logout
+router.get("/logout", utilities.handleErrors(acctController.accountLogout));
 
 
 
- /*   router.post(
-  "/login",
-  regValidate.loginRules(),      // this one IS called (returns an array)
-  regValidate.checkLoginData,    // this one is NOT called
-  (req, res) => {
-    res.status(200).send("login process")
-  }
-)*/
-module.exports = router;  
+module.exports = router; 
