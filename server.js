@@ -18,6 +18,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/");
 const accountRoute = require("./routes/accountRoute")
 const cookieParser = require("cookie-parser")
+const jwt = require("jsonwebtoken")
 
 
 /* ***********************
@@ -54,7 +55,6 @@ app.use(utilities.checkJWTToken)
 app.use(utilities.checkLogin)
 
 //middleware for logged in for all views
-const jwt = require("jsonwebtoken")
 app.use((req, res, next) => {
   if (req.cookies && req.cookies.jwt) {
     try {
@@ -121,11 +121,11 @@ app.use(async (err, req, res, next) => {
  * Values from .env (environment) file
  *************************/
 const port = process.env.PORT
-const host = process.env.HOST
+//const host = process.env.HOST
 
 /* ***********************
  * Log statement to confirm server operation
  *************************/
 app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`)
+  console.log(`app listening on port ${port}`)
 })
