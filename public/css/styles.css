@@ -80,6 +80,7 @@ footer a:hover {
 #login {
   color: blue !important; 
   font-weight: bold;
+  text-decoration: underline !important;
 }
 
 #tools {
@@ -473,8 +474,10 @@ nav  ul li:hover a {
 
 }
 
-.notice {
+.notice, .success, .error {
   color: red;
+  font-weight: bold;
+  margin: 0.5rem 0;
 }
 
 #inventoryDisplay {

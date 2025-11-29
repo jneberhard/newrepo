@@ -246,13 +246,15 @@ async function updatePassword(req, res, next) {
 async function accountLogout(req, res, next) {
   try {
     res.clearCookie("jwt") // clear the JWT cookie
-    if (req.session) {   // this is here because using express-session
-        req.session.destroy(() => {
+    req.flash("success", "Account logged out successfully.")
+   /* if (req.session) {   // this is here because using express-session      
+      req.session.destroy(() => {
           return res.redirect("/account/login") 
         })
       } else {
         return res.redirect("/account/login")
-      }
+      }*/
+    res.redirect("/account/login")
   } catch (error) {
     console.error("Error during logout:", error)
     res.redirect("/")
