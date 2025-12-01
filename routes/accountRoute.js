@@ -30,9 +30,9 @@ router.post("/login",
 router.get("/", utilities.checkLogin, utilities.handleErrors(acctController.buildAccount));
 
 //route for update account and update password view
-router.get("/update/:account_id",  utilities.checkLogin, utilities.handleErrors(acctController.buildUpdateAccount));
-router.post("/update/:account_id", utilities.checkLogin, regValidate.updateRules(), regValidate.checkUpdateData, utilities.handleErrors(acctController.updateAccount));
-router.post("/update-password/:account_id", utilities.checkLogin, regValidate.passwordRules(), regValidate.checkPasswordData, utilities.handleErrors(acctController.updatePassword))
+router.get("/update/:account_id",  utilities.checkLogin, regValidate.checkOwnership, utilities.handleErrors(acctController.buildUpdateAccount));
+router.post("/update/:account_id", utilities.checkLogin, regValidate.checkOwnership, regValidate.updateRules(), regValidate.checkUpdateData, utilities.handleErrors(acctController.updateAccount));
+router.post("/update-password/:account_id", utilities.checkLogin, regValidate.checkOwnership, regValidate.passwordRules(), regValidate.checkPasswordData, utilities.handleErrors(acctController.updatePassword))
   
 //route for logout
 router.get("/logout", utilities.handleErrors(acctController.accountLogout));

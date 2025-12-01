@@ -1,4 +1,4 @@
-<title><%= title %></title>
+
 <h1><%= title %></h1>
 
 <%- messages() %>
@@ -18,11 +18,11 @@
     </div>
     <div>
         <label for="last_name">Last Name</label>
-        <input type="text" id="last_name" name="account_lastname" required value="<%= accountData.account_lastname %>"/>
+        <input type="text" id="last_name" name="account_lastname" required value="<%= accountData.account_lastname %>">
     </div>
     <div>
         <label for="email">Email address</label>
-        <input type="email" id="email" name="account_email" required value="<%= accountData.account_email %>"/>
+        <input type="email" id="email" name="account_email" required value="<%= accountData.account_email %>">
     </div>
 
     <button type="submit">Update Account</button>
@@ -34,7 +34,7 @@
         <span> (Password must be at least 12 characters, include one uppercase letter, one number, and one special character.)</span>
         <input type="password" id="password" name="account_password" required minlength="12" 
         pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{12,}$" 
-        title="password">
+        >
     </div>
 
     <button type="submit">Update Password</button>  

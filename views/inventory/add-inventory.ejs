@@ -1,4 +1,4 @@
-<title><%= title %></title>
+
 <h1><%= title %></h1>
 <%- messages() %>
 
@@ -20,11 +20,11 @@
             </div>
             <div>
                 <label for="inv_model">Model</label>
-                <input type="text" id="inv_model" name="inv_model" required value="<%= inv_model %>"/>
+                <input type="text" id="inv_model" name="inv_model" required value="<%= inv_model %>">
             </div>
             <div>
                 <label for="inv_year">Year</label>
-                <input type="text" id="inv_year" name="inv_year" required pattern="\d{4}" maxlength="4" value="<%= inv_year %>"/>
+                <input type="text" id="inv_year" name="inv_year" required pattern="\d{4}" maxlength="4" value="<%= inv_year %>">
             </div>
             <div>
                 <label for="inv_description">Description</label>
@@ -32,27 +32,30 @@
             </div>
             <div>
                 <label for="inv_image">Image</label>
-                <input type="text" id="inv_image" name="inv_image" required value="<%= inv_image || "/images/vehicles/no-image.png" %>"/>
+                <input type="text" id="inv_image" name="inv_image" required value="<%= inv_image || "/images/vehicles/no-image.png" %>">
             </div>
             <div>
                 <label for="inv_thumbnail">Thumbnail</label>
-                <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="<%= inv_thumbnail || "/images/vehicles/no-image-tn.png" %>"/>
+                <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="<%= inv_thumbnail || "/images/vehicles/no-image-tn.png" %>">
             </div>
             <div>
                 <label for="inv_price">Price</label>
-                <input type="number" id="inv_price" name="inv_price" required min="0" value="<%= inv_price %>"/>
+                <input type="number" id="inv_price" name="inv_price" required min="0" value="<%= inv_price %>">
             </div>
             <div>
                 <label for="inv_miles">Mileage</label>
-                <input type="number" id="inv_miles" name="inv_miles" required min="0" value="<%= inv_miles %>"/>
+                <input type="number" id="inv_miles" name="inv_miles" required min="0" value="<%= inv_miles %>">
             </div>
             <div>
                 <label for="inv_color">Color</label>
-                <input type="text" id="inv_color" name="inv_color" required value="<%= inv_color %>"/>
+                <input type="text" id="inv_color" name="inv_color" required value="<%= inv_color %>">
             </div>
             <div>
                 <label for="classification_id">Classification</label>
+                <select id="classification_id" name="classification_id" required>
+                    <option value="">Select a classification</option>
                 <%- classificationList %>
+                </select>
             </div>
             <button type="submit">Add New Vehicle</button>
         </form>       

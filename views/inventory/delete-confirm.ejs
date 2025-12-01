@@ -1,4 +1,4 @@
-<title><%= title %></title>
+
 <h1><%= title %></h1>
 <%- messages() %>
 
@@ -20,15 +20,15 @@
             </div>
             <div>
                 <label for="inv_model">Model</label>
-                <input type="text" id="inv_model" name="inv_model" required readonly value="<%= inv_model %>"/>
+                <input type="text" id="inv_model" name="inv_model" required readonly value="<%= inv_model %>">
             </div>
             <div>
                 <label for="inv_year">Year</label>
-                <input type="text" id="inv_year" name="inv_year" required readonly pattern="\d{4}" maxlength="4" value="<%= inv_year %>"/>
+                <input type="text" id="inv_year" name="inv_year" required readonly pattern="\d{4}" maxlength="4" value="<%= inv_year %>">
             </div>
             <div>
                 <label for="inv_price">Price</label>
-                <input type="number" id="inv_price" name="inv_price" required readonly min="0" value="<%= inv_price %>"/>
+                <input type="number" id="inv_price" name="inv_price" required readonly min="0" value="<%= inv_price %>">
             </div>
             
             <button type="submit">Delete</button>

@@ -482,7 +482,7 @@ nav  ul li:hover a {
 
 #inventoryDisplay {
   margin-top: 1.5rem;
-  color: -var(--primary-color);
+  color: var(--primary-color);
   font-weight: bold;
 }
 

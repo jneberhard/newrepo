@@ -35,7 +35,7 @@ router.post("/add-inventory", checkAccountType, invValidate.newInventoryRules(),
 )
 
 //route to help choose classification for editing a vehicle
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+router.get("/getInventoryJSON/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 //router for inventory management
 router.get("/edit/:inv_id", checkAccountType, utilities.handleErrors(invController.buildEditInventory));

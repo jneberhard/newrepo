@@ -2,6 +2,7 @@ const utilities = require(".")
 const { body, validationResult } = require("express-validator")
 const validate = {}
 const accountModel = require("../models/account-model")
+const jwt = require("jsonwebtoken")
   
 /*  **********************************
   *  Registration Data Validation Rules
@@ -194,6 +195,33 @@ validate.checkPasswordData = async (req, res, next) => {
         })
     }
     next();
+};
+/* ******************************
+ * Check account ownership
+ * ***************************** */
+validate.checkOwnership = (req, res, next) => {
+    try {
+        const token = req.cookies.jwt
+        if (!token) {
+            req.flash("error", "You are not authorized to do this action")
+            return res.redirect("/account/login")
+        }
+        const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+        const loggedInId = decoded.account_id;
+        const requestedId = parseInt(req.params.account_id);
+
+        if (loggedInId !== requestedId) {
+            req.flash("error", "You are not authorized to update this account.");
+            return res.redirect("/account"); 
+        }
+
+        req.user = decoded;
+        next()
+    } catch (error) {
+        console.error("Error checking account ownership:", error)
+        req.flash("error", "Authentication failed. Please log in again.")
+        return res.redirect("/account/login")
+    }
 };
 
 module.exports = validate

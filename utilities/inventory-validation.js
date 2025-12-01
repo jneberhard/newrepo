@@ -11,14 +11,12 @@ validate.newInventoryRules = () => {
         // Make required
     body("inv_make")
       .trim()
-      .escape()
       .notEmpty()
       .withMessage("Make is required."),
 
     // Model required
     body("inv_model")
       .trim()
-      .escape()
       .notEmpty()
       .withMessage("Model is required."),
 
@@ -33,7 +31,6 @@ validate.newInventoryRules = () => {
     // Description required
     body("inv_description")
       .trim()
-      .escape()
       .notEmpty()
       .withMessage("Description is required."),
 
@@ -66,7 +63,6 @@ validate.newInventoryRules = () => {
     // Color required
     body("inv_color")
       .trim()
-      .escape()
       .notEmpty()
       .withMessage("Color is required."),
 
@@ -93,7 +89,6 @@ validate.checkInvData = async (req, res, next) => {
         let nav = await utilities.getNav();
         let classificationList = await utilities.buildClassificationList(req.body.classification_id)
         res.render("inventory/add-inventory", {
-            errors,
             title: "Add New Vehicle",
             nav,
             classificationList,
@@ -112,13 +107,13 @@ validate.checkUpdateData = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         let nav = await utilities.getNav();
-        let classificationSelect = await utilities.buildClassificationList(req.body.classification_id)
+        let classificationList = await utilities.buildClassificationList(req.body.classification_id)
         const itemName = `${req.body.inv_make} ${req.body.inv_model}`
         res.render("inventory/edit-inventory", {
             errors,
             title: "Edit " + itemName,
             nav,
-            classificationSelect,
+            classificationList,
             inv_id: req.body.inv_id,
             inv_make: req.body.inv_make,
             inv_model: req.body.inv_model,
@@ -160,7 +155,6 @@ validate.checkClassificationData = async (req, res, next) => {
     if (!errors.isEmpty()) {
         let nav = await utilities.getNav();
         res.render("inventory/add-classification", {
-            errors,
             title: "Add New Classification",
             nav,
             errors,

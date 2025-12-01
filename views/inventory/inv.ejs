@@ -1,4 +1,4 @@
-<title><%= title %></title>
+
 <h1><%= title %></h1>
 <%- messages() %>
 
@@ -18,7 +18,9 @@
 
 <h2>Manage Inventory</h2>
 <p>Select a classification from the dropdown to see the list.</p>
-<%- classificationList %>
+<select id="classification_id" name="classification_id" required>
+  <%- classificationList %>
+</select>
 
 <table id="inventoryDisplay"></table>
 
