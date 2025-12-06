@@ -15,6 +15,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const messageRoute = require("./routes/messageRoute")
 const utilities = require("./utilities/");
 const accountRoute = require("./routes/accountRoute")
 const cookieParser = require("cookie-parser")
@@ -95,6 +96,9 @@ app.use("/inv", inventoryRoute);
 
 //account route
 app.use("/account", accountRoute);
+
+// message route
+app.use("/message", messageRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

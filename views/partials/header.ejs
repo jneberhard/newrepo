@@ -9,9 +9,16 @@
     <% if (loggedin) { %>
       <a href="/account" title="Go to account management">Welcome, <%= accountData.account_firstname %>!</a>
       <a id="login" href="/account/logout" title="Click to log out">Logout</a>
+      <div class="message-links">
+        <a href="/account" title="Account and Message Portal">Account and Message Portal</a>
+      </div>
+
     <% } else { %>
       <span>Welcome, Guest!</span>
-    <a id="login" title="Click to log in" href="/account/login">Login</a>
+    <a id="login" class="message-links" title="Click to log in" href="/account/login">Login</a>
+    <div class="message-links">
+        <a href="/account/login" title="Login required to send a message">Send Message</a>
+      </div>
     <% } %>
   </div>
 </header>

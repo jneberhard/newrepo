@@ -1,4 +1,5 @@
 const pool = require("../database");
+const { get } = require("../routes/static");
 
 /* *****************************
 *   Register new account
@@ -87,6 +88,44 @@ async function updatePassword(account_id, hashedPassword) {
   }
 }
 
+/* *****************************
+* Get all Employee and Manager accounts
+* ***************************** */
+async function getEmployeesAndManagers() {
+  try {
+    const sql = `SELECT account_id, account_firstname, account_lastname, account_email, account_type
+      FROM account
+      WHERE account_type IN ('Employee', 'Admin')
+      ORDER BY account_lastname ASC`
+    const result = await pool.query(sql)
+    return result.rows
+  } catch (error) {
+    console.error("Error getting employees and managers:", error)
+    throw error
+  }
+}
 
+async function getAllAccounts() {
+  try {
+    const result = await pool.query(
+      `SELECT account_id, account_firstname, account_lastname, account_email, account_type
+       FROM account
+       ORDER BY account_firstname`
+    )
+    return result.rows
+  } catch (error) {
+    console.error("Error fetching all accounts:", error)
+    throw error
+  }
+}
 
-module.exports = { registerAccount, getAccountById, checkExistingEmail, getAccountByEmail, updatePassword, updateAccount };
+module.exports = {
+  getEmployeesAndManagers,
+  registerAccount,
+  getAccountById,
+  checkExistingEmail,
+  getAccountByEmail,
+  updatePassword,
+  updateAccount, 
+  getAllAccounts
+}

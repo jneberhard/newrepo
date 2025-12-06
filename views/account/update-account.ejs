@@ -10,8 +10,8 @@
 <%  }) %>
     </ul>
 <% } %>
-
-<form class="update-account" action="/account/update/<%= accountData.account_id %>" method="post">
+<section class="form-input">
+<form class="form1" action="/account/update/<%= accountData.account_id %>" method="post">
     <div>
         <label for="first_name">First name</label>
         <input type="text" id="first_name" name="account_firstname" required value="<%= accountData.account_firstname %>">
@@ -27,8 +27,9 @@
 
     <button type="submit">Update Account</button>
 </form>
-
-<form class="update-password" action="/account/update-password/<%= accountData.account_id %>" method="post">
+</section>
+<section class="form-input">
+<form class="form1" action="/account/update-password/<%= accountData.account_id %>" method="post">
     <div>
         <label for="password">New Password</label>
         <span> (Password must be at least 12 characters, include one uppercase letter, one number, and one special character.)</span>
@@ -39,3 +40,4 @@
 
     <button type="submit">Update Password</button>  
 </form>
+</section>

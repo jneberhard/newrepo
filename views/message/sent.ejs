@@ -1,0 +1,27 @@
+<h1><%= title %></h1>
+
+<% if (messages.length === 0) { %>
+  <p>You haven’t sent any messages yet.</p>
+<% } else { %>
+  <table class="sent">
+    <thead>
+      <tr>
+        <th>To</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Sent At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% messages.forEach(msg => { %>
+        <tr>
+          <td><%= msg.recipient %></td>
+          <td><%= msg.subject %></td>
+          <td><%= msg.message %></td>
+          <td><%= msg.sent_at.toLocaleString() %></td>
+          
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>

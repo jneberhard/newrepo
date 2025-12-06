@@ -1,0 +1,50 @@
+<h1><%= title %></h1>
+<% if (success && success.length) { %>
+  <div class="flash success"><%= success %></div>
+<% } %>
+<% if (error && error.length) { %>
+  <div class="flash error"><%= error %></div>
+<% } %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<div class ="form-container">
+    <div class="form-input">  
+        <form class="form1" action="/message/send" method="post">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required value="<%= username %>">
+            </div>
+            <div>
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required value="<%= subject %>">
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows=6 required><%= message %></textarea>
+            </div>
+            <div>
+                <label for="recipient">Recipient</label>
+                <select id="recipient" name="recipient" required>
+                    <option value="">Select a recipient</option>
+                <%- recipientList %>
+                </select>
+            </div>
+            <% if (typeof reply_to !== "undefined" && reply_to) { %>
+                <input type="hidden" name="reply_to" value="<%= reply_to %>">
+            <% } %>
+            <button type="submit">Send Message</button>
+        </form>       
+    </div>
+</div>
+<% if (success && success.length) { %>
+  <script>
+    alert("<%= success %>");
+  </script>
+<% } %>

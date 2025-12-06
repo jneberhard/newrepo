@@ -73,33 +73,6 @@ async function registerAccount(req, res, next) {
 }
 }
 
-
-/* ****************************************
-*  account login
-* *************************************** */
-
-/*async function loginAccount(req, res, next) {
-  const { account_email, account_password } = req.body
-  try {
-    const accountData = await accountModel.checkExistingEmail(account_email)
-    if (!accountData) {
-      req.flash("error", "Invalid email or password.")
-      return res.redirect("/account/login")
-    }
-
-    const match = await bcrypt.compare(account_password, accountData.account_password)
-    if (match) {
-      req.flash("success", "You are now logged in.")
-      res.redirect("/account/")
-    } else {
-      req.flash("error", "Invalid email or password.")
-      res.redirect("/account/login")
-    }
-  } catch (error) {
-    next(error)
-  }
-}
-*/
 /* ****************************************
  *  Process login request
  * ************************************ */
